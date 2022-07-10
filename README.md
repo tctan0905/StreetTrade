@@ -1,0 +1,2 @@
+# StreetTrade
+Create new project
