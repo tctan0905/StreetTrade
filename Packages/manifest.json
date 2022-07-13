@@ -14,6 +14,20 @@
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.6.4",
     "com.unity.ugui": "1.0.0",
+    "com.xmobitea.changx.mini-autogenerate": "1.3.8",
+    "com.xmobitea.changx.mini-build": "1.3.8",
+    "com.xmobitea.changx.mini-deviceid": "1.4.0",
+    "com.xmobitea.changx.mini-global-coroutine": "1.3.8",
+    "com.xmobitea.changx.mini-helper": "1.3.8",
+    "com.xmobitea.changx.mini-json": "1.3.9",
+    "com.xmobitea.changx.mini-localization": "1.3.9",
+    "com.xmobitea.changx.mini-poolmanager": "1.3.8",
+    "com.xmobitea.changx.mini-popup": "1.3.9",
+    "com.xmobitea.changx.mini-singleton": "1.3.8",
+    "com.xmobitea.changx.mini-sound": "1.3.8",
+    "com.xmobitea.changx.mini-ui": "1.4.0",
+    "com.xmobitea.changx.msgpack": "1.0.1",
+    "com.xmobitea.changx.uieffect": "1.3.8",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -45,5 +59,14 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "XmobiTea Family Package Registry by Chang X",
+      "url": "https://registry.npmjs.org",
+      "scopes": [
+        "com.xmobitea"
+      ]
+    }
+  ]
 }
