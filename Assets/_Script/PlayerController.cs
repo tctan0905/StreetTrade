@@ -7,10 +7,14 @@ public class PlayerController : MonoBehaviour
     Touch touch;
 
     bool isMove;
+    int S = 1920;
+    int V = 900;
+    int T;
     // Start is called before the first frame update
     void Start()
     {
         isMove = false;
+        T = S / V;
     }
 
     // Update is called once per frame
@@ -22,11 +26,16 @@ public class PlayerController : MonoBehaviour
 
             if (touch.phase == TouchPhase.Ended)
             {
-                var tempPos = Camera.main.ScreenToWorldPoint(touch.position);
-
-                this.transform.DOMove(tempPos, 0.5f).SetEase(Ease.Linear)
-                    .OnStart(()=> { isMove = true; })
-                    .OnComplete(() =>{ isMove = false; });
+                if (!isMove)
+                {
+                    var tempPos = Camera.main.ScreenToWorldPoint(touch.position);
+                    tempPos.z = 0f;
+                    Debug.Log(touch.position);
+                    this.transform.DOMove(tempPos, T).SetEase(Ease.Linear)
+                        .OnStart(() => { isMove = true; })
+                        .OnComplete(() => { isMove = false; });
+                }
+                
                                
             }
         }

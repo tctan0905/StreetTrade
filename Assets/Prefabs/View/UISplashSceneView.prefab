@@ -121,7 +121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3712338064513084490}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2308235999145498926}
+        m_TargetAssemblyTypeName: UISplashSceneView, Assembly-CSharp
+        m_MethodName: PressLoginGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3712338065158552215
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +145,7 @@ GameObject:
   - component: {fileID: 3712338065158552208}
   - component: {fileID: 3712338065158552210}
   - component: {fileID: 3712338065158552209}
+  - component: {fileID: 2308235999145498926}
   m_Layer: 5
   m_Name: UISplashSceneView
   m_TagString: Untagged
@@ -200,6 +213,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2308235999145498926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3712338065158552215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c63c89dcecb32bf4f9cd781638ec2c21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3712338065296567085
 GameObject:
   m_ObjectHideFlags: 0

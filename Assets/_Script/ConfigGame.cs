@@ -6,6 +6,8 @@ using System;
 [CreateAssetMenu(fileName = "ConfigGame", menuName = "Scriptable/ConfigGame", order = 1)]
 public class ConfigGame : ScriptableObject
 {
+    [SerializeField] private string defaultGoods = "{}";
+
     [SerializeField]
     private List<GoodsConfigItem> goodsConfigItemLst;
     public List<GoodsConfigItem> GoodsConfigItemLst => goodsConfigItemLst;

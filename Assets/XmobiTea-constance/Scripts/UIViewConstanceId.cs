@@ -4,5 +4,7 @@ namespace XmobiTea.MiniPopup
 {
     public partial class UIViewConstanceId
     {
+        public const string UISplashSceneView = "UISplashSceneView";
+        public const string UIMainView = "UIMainView";
     }
 }

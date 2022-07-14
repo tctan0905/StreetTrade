@@ -4,5 +4,6 @@ namespace XmobiTea.MiniPopup
 {
     public partial class UIPopupConstanceId
     {
+        public const string UIInventoryTabPopup = "UIInventoryTabPopup";
     }
 }

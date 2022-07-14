@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4065f7ad1fb474da627eb24f229b00, type: 3}
   m_Name: XmobiTea UISettings
   m_EditorClassIdentifier: 
-  font: {fileID: 0}
-  tmp_font: {fileID: 0}
-  uiPopupBases: []
+  font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  tmp_font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  uiPopupBases:
+  - {fileID: 1814270443215537160, guid: aaa63b245079d824ba98c705747bb25b, type: 3}
   uiAdminToolPopupBases: []
   uiViewBases:
-  - {fileID: 4688886455179584285, guid: f2658d60fca6fc84f8798c92efc27527, type: 3}
   - {fileID: 3712338065158552215, guid: 5a99e34df8eb61d4d9dc35fe473eabb4, type: 3}
+  - {fileID: 4688886455179584285, guid: f2658d60fca6fc84f8798c92efc27527, type: 3}
