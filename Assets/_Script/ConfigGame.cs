@@ -2,23 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using XmobiTea.MiniJson;
+using CodeStage.AntiCheat.ObscuredTypes;
+using System.Linq;
 
 [CreateAssetMenu(fileName = "ConfigGame", menuName = "Scriptable/ConfigGame", order = 1)]
 public class ConfigGame : ScriptableObject
 {
-    [SerializeField] private string defaultGoods = "{}";
-
-    [SerializeField]
-    private List<GoodsConfigItem> goodsConfigItemLst;
-    public List<GoodsConfigItem> GoodsConfigItemLst => goodsConfigItemLst;
-    public GoodsConfigItem GetGoodsConfigItem(int id)
-    {
-        return goodsConfigItemLst.Find(x => x.Id == id);
-    }
-
-    [SerializeField]
-    private List<GoodsStatsConfig> goodsStatsConfigLst;
-    public List<GoodsStatsConfig> GoodsStatsConfigLst => goodsStatsConfigLst;
+    [SerializeField] private string defaultGoodsStatsConfig = "{}";
+    [SerializeField] private string dafaultMapStatsConfig = "{}";
 
     [SerializeField]
     private List<BodyPartConfigItem> hatConfigItemLst;
@@ -29,20 +21,12 @@ public class ConfigGame : ScriptableObject
     }
 
     [SerializeField]
-    private List<BodyPartStatsConfig> hatStatsConfig;
-    public List<BodyPartStatsConfig> HattStatsConfig => hatStatsConfig;
-
-    [SerializeField]
     private List<BodyPartConfigItem> shirtConfigItemLst;
     public List<BodyPartConfigItem> ShirtConfigItemLst => shirtConfigItemLst;
     public BodyPartConfigItem GetShirtConfigItem(int id)
     {
         return shirtConfigItemLst.Find(x => x.Id == id);
     }
-
-    [SerializeField]
-    private List<BodyPartStatsConfig> shirtStatsConfig;
-    public List<BodyPartStatsConfig> ShirttStatsConfig => shirtStatsConfig;
 
     [SerializeField]
     private List<BodyPartConfigItem> trouserConfigItemLst;
@@ -53,7 +37,172 @@ public class ConfigGame : ScriptableObject
     }
 
     [SerializeField]
-    private List<BodyPartStatsConfig> trouserStatsConfig;
-    public List<BodyPartStatsConfig> TrouserStatsConfig => trouserStatsConfig;
+    private List<GoodsConfigItem> goodsConfigItemLst;
+    public List<GoodsConfigItem> GoodsConfigItemLst => goodsConfigItemLst;
+    public GoodsConfigItem GetGoodsConfigItem(int id)
+    {
+        return goodsConfigItemLst.Find(x => x.Id == id);
+    }
 
+    [SerializeField]
+    private List<MapConfigItem> mapConfigItemLst;
+    public List<MapConfigItem> MapConfigItemLst => mapConfigItemLst;
+    public MapConfigItem GetMapConfigItem (int id)
+    {
+        return mapConfigItemLst.Find(x => x.Id == id);
+    }
+
+    [SerializeField]
+    private Config<BodyPartStatsConfigItem> hatStatsConfig;
+    public Config<BodyPartStatsConfigItem> HattStatsConfig => hatStatsConfig;
+
+    [SerializeField]
+    private Config<BodyPartStatsConfigItem> trouserStatsConfig;
+    public Config<BodyPartStatsConfigItem> TrouserStatsConfig => trouserStatsConfig;
+
+    [SerializeField]
+    private Config<BodyPartStatsConfigItem> shirtStatsConfig;
+    public Config<BodyPartStatsConfigItem> ShirttStatsConfig => shirtStatsConfig;
+
+    [SerializeField]
+    private Config<GoodsStatsConfigItem> goodsStatsConfigLst;
+    public Config<GoodsStatsConfigItem> GoodsStatsConfigLst => goodsStatsConfigLst;
+
+    [SerializeField]
+    private Config<MapStatsConfigItem> mapStatsConfig;
+    public Config<MapStatsConfigItem> MapStatsConfig => mapStatsConfig;
+
+    [Serializable]
+    public class Config<T> where T : ConfigItem, new()
+    {
+        private const string DEFAULT_DATA = "{}";
+
+        public ObscuredString ConfigName { get; private set; }
+        public ObscuredInt Version { get; private set; }
+        public List<T> Items { get; private set; }
+        void SaveConfig(CXData cxData)
+        {
+            StoragePrefs.Set(ConfigName, cxData.JSON);
+        }
+
+        CXData GetConfig(string defaultConfigData = DEFAULT_DATA)
+        {
+            return CXObject.FromJson(StoragePrefs.Get(ConfigName, defaultConfigData));
+        }
+
+        public void UpdateConfig(CXData cxData)
+        {
+            try
+            {
+                var version = cxData.GetInt("Version").GetValueOrDefault();
+                Version = version;
+
+                OnUpdateConfig(cxData);
+                SaveConfig(cxData);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError("Config " + ConfigName + " error!");
+                Debug.LogException(ex);
+
+                ReUpdateConfig(GetConfig());
+            }
+        }
+
+        void ReUpdateConfig(CXData cxData)
+        {
+            var version = cxData.GetInt("Version").GetValueOrDefault();
+            Version = version;
+
+            OnUpdateConfig(cxData);
+        }
+
+        void OnUpdateConfig(CXData cxData)
+        {
+            Items.Clear();
+            if (cxData.ContainsKey("Items"))
+            {
+                var cxItems = cxData.GetCXDataList("Items");
+
+                for (var i = 0; i < cxItems.Count; i++)
+                {
+                    var t = new T();
+                    t.SetData(cxItems[i]);
+
+                    Items.Add(t);
+                }
+            }
+        }
+
+        public T GetItemById(int id)
+        {
+            return Items.FirstOrDefault(x => x.Id == id);
+        }
+
+        public Config(string configName, string defaultConfigData = DEFAULT_DATA)
+        {
+            ConfigName = configName;
+            Version = -1;
+            Items = new List<T>();
+
+            ReUpdateConfig(GetConfig(defaultConfigData));
+        }
+    }
+
+    [Serializable]
+    public class ConfigItem
+    {
+        ///public CXData cxData { get; private set; }
+
+        public ObscuredInt Id { get; private set; }
+
+        public virtual void SetData(CXData cxData)
+        {
+            //this.cxData = cxData;
+
+            Id = cxData.GetInt("Id").GetValueOrDefault();
+        }
+    }
+
+    [Serializable]
+    public class MapStatsConfigItem : ConfigItem
+    {
+        public override void SetData(CXData cxData)
+        {
+            base.SetData(cxData);
+        }
+    }
+
+    [Serializable]
+    public class GoodsStatsConfigItem: ConfigItem
+    {
+        public ObscuredInt MoneyBuy { get; private set; }
+        public ObscuredLong TimeDone { get; private set; }
+        public ObscuredInt Profit { get; private set; }
+        public ObscuredInt Experience { get; private set; }
+
+        public override void SetData(CXData cxData)
+        {
+            base.SetData(cxData);
+
+            MoneyBuy = cxData.GetInt("MoneyBuy").GetValueOrDefault();
+            TimeDone = cxData.GetLong("TimeDone").GetValueOrDefault();
+            Profit = cxData.GetInt("Profit").GetValueOrDefault();
+            Experience = cxData.GetInt("Experience").GetValueOrDefault();
+        }
+    }
+
+    public class BodyPartStatsConfigItem: ConfigItem
+    {
+        public ObscuredInt Strong { get; private set; }
+        public ObscuredInt Heart { get; private set; }
+
+        public override void SetData(CXData cxData)
+        {
+            base.SetData(cxData);
+
+            Strong = cxData.GetInt("Strong").GetValueOrDefault();
+            Heart = cxData.GetInt("Heart").GetValueOrDefault();
+        }
+    }
 }

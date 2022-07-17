@@ -12,16 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2df36b57aa20d44ea935daff5f9568c, type: 3}
   m_Name: ConfigGame
   m_EditorClassIdentifier: 
-  goodsConfigItemLst: []
-  goodsStatsConfigLst:
-  - Id: 0
-    MoneyBuy: 200
-    TimeDone: 1800
-    Profit: 350
-    Experience: 50
+  defaultGoodsStatsConfig: '{}'
+  dafaultMapStatsConfig: '{}'
   hatConfigItemLst: []
-  hatStatsConfig: []
   shirtConfigItemLst: []
-  shirtStatsConfig: []
   trouserConfigItemLst: []
-  trouserStatsConfig: []
+  goodsConfigItemLst: []
+  mapConfigItemLst:
+  - Id: 0
+    Spr: {fileID: 21300000, guid: 95396bb64b894a1418e36a0f47984bb1, type: 3}
+  - Id: 1
+    Spr: {fileID: 21300000, guid: 5f7fd68f79dd5c744b0845eee3223f17, type: 3}

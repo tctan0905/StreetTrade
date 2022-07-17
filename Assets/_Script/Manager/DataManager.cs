@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,4 +26,6 @@ public class DataManager : MonoBehaviour
     [SerializeField]
     private UserCharacterItem userCharacterItem;
     public UserCharacterItem UserCharacterItem => userCharacterItem;
+
+    public Action OnUpdateMap;
 }

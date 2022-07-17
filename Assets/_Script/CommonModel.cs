@@ -7,6 +7,8 @@ using System;
 [Serializable]
 public class UserCurrent
 {
+    public Action OnUpdateUserCurrent;
+
     [SerializeField]
     private int money;
     public int Money
@@ -102,6 +104,13 @@ public class UserCharacterItem
     }
 }
 
+[Serializable]
+public class MapConfigItem
+{
+    public int Id;
+    public Sprite Spr;
+}
+
 // CONFIG ITEM
 [Serializable]
 public class GoodsConfigItem
@@ -116,6 +125,9 @@ public class BodyPartConfigItem
     public int Id;
     public Sprite Sprite;
 }
+
+
+
 
 // STATS CONFIG ITEM
 [Serializable]

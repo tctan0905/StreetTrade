@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XmobiTea.MiniSingleton;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
-    private static GameManager instance;
     [SerializeField]
     private DataManager dataManager;
     public DataManager DataManager => dataManager;
@@ -13,16 +13,9 @@ public class GameManager : MonoBehaviour
     private ConfigGame configGame;
     public ConfigGame ConfigGame => configGame;
 
-    private void Awake()
+    protected override void OnInit()
     {
-        if (instance != null)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            instance = this;
-        }
+        base.OnInit();
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -33,9 +26,4 @@ public class GameManager : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

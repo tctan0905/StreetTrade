@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XmobiTea.MiniPopup;
 using XmobiTea.MiniPopup.Core;
 
-public class UIMainView : UIViewBase
+namespace StreetTrade
 {
-    public override void OnCustomShow(params object[] instantiateData)
+    public class UIMainView : UIViewBase
     {
-        base.OnCustomShow(instantiateData);
+        public override void OnCustomShow(params object[] instantiateData)
+        {
+            base.OnCustomShow(instantiateData);
+        }
+
+        public void PressMap()
+        {
+            UIManager.ShowPopup(UIPopupConstanceId.UIMapTabPopup);
+        }
     }
 }

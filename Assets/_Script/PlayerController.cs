@@ -26,18 +26,36 @@ public class PlayerController : MonoBehaviour
 
             if (touch.phase == TouchPhase.Ended)
             {
-                if (!isMove)
+                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+
+                RaycastHit hit;
+                if (Physics.Raycast(touch.position, transform.TransformDirection(Vector3.forward),out hit,100))
                 {
-                    var tempPos = Camera.main.ScreenToWorldPoint(touch.position);
-                    tempPos.z = 0f;
-                    Debug.Log(touch.position);
-                    this.transform.DOMove(tempPos, T).SetEase(Ease.Linear)
-                        .OnStart(() => { isMove = true; })
-                        .OnComplete(() => { isMove = false; });
+                    if (hit.transform.CompareTag("Walk"))
+                    {
+                        if (!isMove)
+                        {
+                            Move();
+                        }
+                        Debug.Log("AAAAAAAAAa");
+                    }
+                    
                 }
-                
-                               
+                else
+                {
+                    Debug.Log("BBBBBBBBBBBB");
+                }
             }
         }
+    }
+
+    void Move()
+    {
+        var tempPos = Camera.main.ScreenToWorldPoint(touch.position);
+        tempPos.z = 0f;
+        Debug.Log(touch.position);
+        this.transform.DOMove(tempPos, T).SetEase(Ease.Linear)
+            .OnStart(() => { isMove = true; })
+            .OnComplete(() => { isMove = false; });
     }
 }
