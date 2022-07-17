@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using XmobiTea.MiniPopup.Core;
 
-public class UIInventoryTabPopup : UIPopupBase
+public class UIMarketTabPopup : UIPopupBase
 {
     public override void OnCustomShow(params object[] instantiateData)
     {
         base.OnCustomShow(instantiateData);
-    }
-
-    public void PressClose()
-    {
-        this.gameObject.SetActive(false);
     }
 }

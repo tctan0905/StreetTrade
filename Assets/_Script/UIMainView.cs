@@ -17,5 +17,10 @@ namespace StreetTrade
         {
             UIManager.ShowPopup(UIPopupConstanceId.UIMapTabPopup);
         }
+
+        public void PressTruck()
+        {
+            UIManager.ShowPopup(UIPopupConstanceId.UIInventoryTabPopup);
+        }
     }
 }

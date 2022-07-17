@@ -24,16 +24,16 @@ public class UserCurrent
     }
 
     [SerializeField]
-    private int experience;
-    public int Experience
+    private int exp;
+    public int Exp
     {
         get
         {
-            return experience;
+            return exp;
         }
         set
         {
-            experience = value;
+            exp = value;
         }
     }
 
@@ -107,6 +107,13 @@ public class UserCharacterItem
 [Serializable]
 public class MapConfigItem
 {
+    public enum MapState
+    {
+        MARKET = 0,
+        SUPERMARKET = 1,
+    }
+
+    public MapState mapState;
     public int Id;
     public Sprite Spr;
 }
@@ -126,27 +133,14 @@ public class BodyPartConfigItem
     public Sprite Sprite;
 }
 
-
-
+[Serializable]
+public class GoodsDataItem
+{
+    public int Id;
+    public int Amount;
+}
 
 // STATS CONFIG ITEM
-[Serializable]
-public class GoodsStatsConfig
-{
-    public int Id;
-    public int MoneyBuy;
-    public int TimeDone;
-    public int Profit;
-    public int Experience;
-}
-
-[Serializable]
-public class BodyPartStatsConfig
-{
-    public int Id;
-    public int Strong;
-    public int Heart;
-}
 
 public class LocalityStatsConfig
 {

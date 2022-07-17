@@ -2,6 +2,7 @@ using StreetTrade;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XmobiTea.MiniPopup;
 using XmobiTea.MiniPopup.Core;
 
 public class UIMapTabPopup : UIPopupBase
@@ -36,6 +37,19 @@ public class UIMapTabPopup : UIPopupBase
         if (uiMapItemController == null) return;
 
         var item = uiMapItemController.Item;
+
+        UIManager.HideAllView();
+        UIManager.HideAllPopup();
+
+        switch (item.mapState)
+        {
+            case MapConfigItem.MapState.MARKET:
+                UIManager.ShowPopup(UIPopupConstanceId.UIMarketTabPopup);
+                break;
+            case MapConfigItem.MapState.SUPERMARKET:
+                UIManager.ShowPopup(UIPopupConstanceId.UISuperMarketTabPopup);
+                break;
+        }
     }
 
     public void PressClose()

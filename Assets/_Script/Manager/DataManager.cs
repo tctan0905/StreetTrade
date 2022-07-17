@@ -1,3 +1,4 @@
+using CodeStage.AntiCheat.ObscuredTypes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,4 +29,22 @@ public class DataManager : MonoBehaviour
     public UserCharacterItem UserCharacterItem => userCharacterItem;
 
     public Action OnUpdateMap;
+
+    [SerializeField]
+    private ObscuredInt maxShoppingcart;
+    public ObscuredInt MaxShoppingCart
+    {
+        get
+        {
+            return maxShoppingcart;
+        }
+        set
+        {
+            maxShoppingcart = value;
+        }
+    }
+
+    [SerializeField]
+    private List<GoodsDataItem> goodsDataItemLst;
+    public List<GoodsDataItem> GoodsDataItemLst => goodsDataItemLst;
 }

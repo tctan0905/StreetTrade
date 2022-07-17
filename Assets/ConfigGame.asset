@@ -17,9 +17,23 @@ MonoBehaviour:
   hatConfigItemLst: []
   shirtConfigItemLst: []
   trouserConfigItemLst: []
-  goodsConfigItemLst: []
-  mapConfigItemLst:
+  goodsConfigItemLst:
   - Id: 0
+    GoodSpr: {fileID: 21300000, guid: dcfea9db0d20e3a4f87788fd1a106749, type: 3}
+  - Id: 0
+    GoodSpr: {fileID: 21300000, guid: c724a4fbe3af16949b8ce6349947db1f, type: 3}
+  - Id: 0
+    GoodSpr: {fileID: 21300000, guid: 40f311f0434fd5d458febbbc1a8ded5c, type: 3}
+  - Id: 0
+    GoodSpr: {fileID: 21300000, guid: 5b40db1df2d2ecc44a161b68ebdbd434, type: 3}
+  - Id: 0
+    GoodSpr: {fileID: 21300000, guid: 9ed5b4a05f9e55f438860a817b9deb4c, type: 3}
+  - Id: 0
+    GoodSpr: {fileID: 21300000, guid: 97f35671233085a4487cd515e5b19020, type: 3}
+  mapConfigItemLst:
+  - mapState: 0
+    Id: 0
     Spr: {fileID: 21300000, guid: 95396bb64b894a1418e36a0f47984bb1, type: 3}
-  - Id: 1
+  - mapState: 1
+    Id: 1
     Spr: {fileID: 21300000, guid: 5f7fd68f79dd5c744b0845eee3223f17, type: 3}
