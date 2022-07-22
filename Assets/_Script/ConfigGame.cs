@@ -10,7 +10,8 @@ using System.Linq;
 public class ConfigGame : ScriptableObject
 {
     [SerializeField] private string defaultGoodsStatsConfig = "{}";
-    [SerializeField] private string dafaultMapStatsConfig = "{}";
+    [SerializeField] private string defaultMapStatsConfig = "{}";
+    [SerializeField] private string defaultTruckStatsConfig = "{}";
 
     [SerializeField]
     private List<BodyPartConfigItem> hatConfigItemLst;
@@ -53,6 +54,14 @@ public class ConfigGame : ScriptableObject
     }
 
     [SerializeField]
+    private List<TruckConfigItem> truckConfigItemLst;
+    public List<TruckConfigItem> TruckConfigItemLst => truckConfigItemLst;
+    public TruckConfigItem GetTruckConfigItem(int id)
+    {
+        return truckConfigItemLst.Find(x => x.Id == id);
+    }
+
+    [SerializeField]
     private Config<BodyPartStatsConfigItem> hatStatsConfig;
     public Config<BodyPartStatsConfigItem> HattStatsConfig => hatStatsConfig;
 
@@ -65,12 +74,22 @@ public class ConfigGame : ScriptableObject
     public Config<BodyPartStatsConfigItem> ShirttStatsConfig => shirtStatsConfig;
 
     [SerializeField]
-    private Config<GoodsStatsConfigItem> goodsStatsConfigLst;
-    public Config<GoodsStatsConfigItem> GoodsStatsConfigLst => goodsStatsConfigLst;
+    private Config<GoodsStatsConfigItem> goodsStatsConfig;
+    public Config<GoodsStatsConfigItem> GoodsStatsConfig => goodsStatsConfig;
 
     [SerializeField]
     private Config<MapStatsConfigItem> mapStatsConfig;
     public Config<MapStatsConfigItem> MapStatsConfig => mapStatsConfig;
+
+    [SerializeField]
+    private Config<TruckStatsConfigItem> truckStatsConfig;
+    public Config<TruckStatsConfigItem> TruckStatsConfig => truckStatsConfig;
+
+    public void LoadData()
+    {
+        goodsStatsConfig = new Config<GoodsStatsConfigItem>("GoodsStatsConfig", defaultGoodsStatsConfig);
+        truckStatsConfig = new Config<TruckStatsConfigItem>("TruckStatsConfig", defaultTruckStatsConfig);
+    }
 
     [Serializable]
     public class Config<T> where T : ConfigItem, new()
@@ -176,6 +195,7 @@ public class ConfigGame : ScriptableObject
     [Serializable]
     public class GoodsStatsConfigItem: ConfigItem
     {
+        public ObscuredString Name { get; private set; }
         public ObscuredInt MoneyBuy { get; private set; }
         public ObscuredLong TimeDone { get; private set; }
         public ObscuredInt Profit { get; private set; }
@@ -185,6 +205,7 @@ public class ConfigGame : ScriptableObject
         {
             base.SetData(cxData);
 
+            Name = cxData.GetString("Name");
             MoneyBuy = cxData.GetInt("MoneyBuy").GetValueOrDefault();
             TimeDone = cxData.GetLong("TimeDone").GetValueOrDefault();
             Profit = cxData.GetInt("Profit").GetValueOrDefault();
@@ -203,6 +224,17 @@ public class ConfigGame : ScriptableObject
 
             Strong = cxData.GetInt("Strong").GetValueOrDefault();
             Heart = cxData.GetInt("Heart").GetValueOrDefault();
+        }
+    }
+
+    public class TruckStatsConfigItem: ConfigItem
+    {
+        public ObscuredInt AmountEmpty { get; private set; }
+
+        public override void SetData(CXData cxData)
+        {
+            base.SetData(cxData);
+            AmountEmpty = cxData.GetInt("AmountEmpty").GetValueOrDefault();
         }
     }
 }

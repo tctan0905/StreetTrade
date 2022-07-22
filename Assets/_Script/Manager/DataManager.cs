@@ -47,4 +47,37 @@ public class DataManager : MonoBehaviour
     [SerializeField]
     private List<GoodsDataItem> goodsDataItemLst;
     public List<GoodsDataItem> GoodsDataItemLst => goodsDataItemLst;
+
+    [SerializeField]
+    private List<TruckDataItem> truckDataItemLst;
+    public List<TruckDataItem> TruckDataItemLst => truckDataItemLst;
+
+    public Action OnUpdateTruck;
+    [SerializeField]
+    private ObscuredInt truckIndex;
+    public ObscuredInt TruckIndex
+    {
+        get
+        {
+            return truckIndex;
+        }
+        set
+        {
+            truckIndex = value;
+        }
+    }
+
+    [SerializeField]
+    private ObscuredString currentMap;
+    public ObscuredString CurrentMap
+    {
+        get
+        {
+            return currentMap;
+        }
+        set
+        {
+            currentMap = value;
+        }
+    }
 }

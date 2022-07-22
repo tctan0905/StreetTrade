@@ -20,7 +20,9 @@ MonoBehaviour:
   - {fileID: 6416150843179246286, guid: 8a341cb23d44d3a4fbb8f97f147130f0, type: 3}
   - {fileID: 629612726489091904, guid: b151f819bfe82e84bb2f38006e9f7f11, type: 3}
   - {fileID: 4108083309340197805, guid: 4b6216937bcd82f4f9f5adbae9968078, type: 3}
+  - {fileID: 6805906822697086367, guid: 09d0eb13a5739154d8e1bfc0ed67e18b, type: 3}
   uiAdminToolPopupBases: []
   uiViewBases:
   - {fileID: 3712338065158552215, guid: 5a99e34df8eb61d4d9dc35fe473eabb4, type: 3}
   - {fileID: 4688886455179584285, guid: f2658d60fca6fc84f8798c92efc27527, type: 3}
+  - {fileID: 6630758943458221886, guid: d5d63503ea9e8c84b9f75867753fab8d, type: 3}

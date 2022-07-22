@@ -26,7 +26,7 @@ public class UiSuperMarketTabPopup : UIPopupBase
 
         var configGame = GameManager.Instance.ConfigGame;
 
-        var goodsStatsConfig = configGame.GoodsStatsConfigLst.Items;
+        var goodsStatsConfig = configGame.GoodsStatsConfig.Items;
 
         while (uiSuperMarketItemLst.Count < goodsStatsConfig.Count)
         {
@@ -47,6 +47,13 @@ public class UiSuperMarketTabPopup : UIPopupBase
 
         var item = uiSuperMarketItemController.Item;
 
-        UIManager.ShowPopup(UIPopupConstanceId.UIShowInfoGoodsPopup);
+        UIManager.ShowPopup(UIPopupConstanceId.UIShowInfoGoodsPopup,item);
+    }
+
+
+    public void PressClose()
+    {
+        this.gameObject.SetActive(false);
+        UIManager.ShowView(UIViewConstanceId.UIMainView);
     }
 }

@@ -102,6 +102,22 @@ public class UserCharacterItem
             OnUpdateTrouserItem?.Invoke();
         }
     }
+
+    public Action OnUpdateTruck;
+    [SerializeField]
+    private int truckItemId = 0;
+    public int TruckItemId
+    {
+        get
+        {
+            return truckItemId;
+        }
+        set
+        {
+            truckItemId = value;
+            OnUpdateTruck?.Invoke();
+        }
+    }
 }
 
 [Serializable]
@@ -111,6 +127,8 @@ public class MapConfigItem
     {
         MARKET = 0,
         SUPERMARKET = 1,
+        HOME = 2,
+        TOWN = 3,
     }
 
     public MapState mapState;
@@ -133,6 +151,16 @@ public class BodyPartConfigItem
     public Sprite Sprite;
 }
 
+
+[Serializable]
+public class TruckConfigItem
+{
+    public int Id;
+    public Sprite Amount;
+}
+
+//DATA ITEM
+
 [Serializable]
 public class GoodsDataItem
 {
@@ -140,12 +168,10 @@ public class GoodsDataItem
     public int Amount;
 }
 
-// STATS CONFIG ITEM
-
-public class LocalityStatsConfig
+[Serializable]
+public class TruckDataItem
 {
     public int Id;
-    public bool isOpen;
-
 }
+
 

@@ -6,5 +6,6 @@ namespace XmobiTea.MiniPopup
     {
         public const string UISplashSceneView = "UISplashSceneView";
         public const string UIMainView = "UIMainView";
+        public const string UIHomeView = "UIHomeView";
     }
 }

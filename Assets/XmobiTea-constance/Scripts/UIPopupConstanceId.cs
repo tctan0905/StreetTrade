@@ -9,5 +9,6 @@ namespace XmobiTea.MiniPopup
         public const string UISuperMarketTabPopup = "UISuperMarketTabPopup ";
         public const string UIShowInfoGoodsPopup = "UIShowInfoGoodsPopup";
         public const string UIMarketTabPopup = "UIMarketTabPopup";
+        public const string UIGaraPopup = "UIGaraPopup";
     }
 }

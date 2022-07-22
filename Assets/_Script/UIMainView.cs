@@ -13,11 +13,6 @@ namespace StreetTrade
             base.OnCustomShow(instantiateData);
         }
 
-        public void PressMap()
-        {
-            UIManager.ShowPopup(UIPopupConstanceId.UIMapTabPopup);
-        }
-
         public void PressTruck()
         {
             UIManager.ShowPopup(UIPopupConstanceId.UIInventoryTabPopup);

@@ -38,6 +38,8 @@ public class UIMapTabPopup : UIPopupBase
 
         var item = uiMapItemController.Item;
 
+        var dataCenter = GameManager.Instance.DataManager;
+
         UIManager.HideAllView();
         UIManager.HideAllPopup();
 
@@ -49,7 +51,15 @@ public class UIMapTabPopup : UIPopupBase
             case MapConfigItem.MapState.SUPERMARKET:
                 UIManager.ShowPopup(UIPopupConstanceId.UISuperMarketTabPopup);
                 break;
+            case MapConfigItem.MapState.HOME:
+                UIManager.ShowView(UIViewConstanceId.UIHomeView);
+                break;
+            case MapConfigItem.MapState.TOWN:
+                UIManager.ShowView(UIViewConstanceId.UIMainView);
+                break;
         }
+
+        dataCenter.CurrentMap = item.mapState.ToString();
     }
 
     public void PressClose()

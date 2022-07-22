@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2df36b57aa20d44ea935daff5f9568c, type: 3}
   m_Name: ConfigGame
   m_EditorClassIdentifier: 
-  defaultGoodsStatsConfig: '{}'
-  dafaultMapStatsConfig: '{}'
+  defaultGoodsStatsConfig: '{"ConfigName":"GoodsStatsConfig","Version":1,"Items":[{"Id":0,"Name":"AAAA","MoneyBuy":1000,"TimeDone":180000,"Profit":1200,"Experience":50},{"Id":1,"Name":"BBBB","MoneyBuy":1000,"TimeDone":180000,"Profit":1200,"Experience":50},{"Id":2,"Name":"CCCCC","MoneyBuy":1000,"TimeDone":180000,"Profit":1200,"Experience":50},{"Id":3,"Name":"DDDD","MoneyBuy":1000,"TimeDone":180000,"Profit":1200,"Experience":50},{"Id":4,"Name":"EEEEEE","MoneyBuy":1000,"TimeDone":180000,"Profit":1200,"Experience":50}]}'
+  defaultMapStatsConfig: '{}'
+  defaultTruckStatsConfig: '{}'
   hatConfigItemLst: []
   shirtConfigItemLst: []
   trouserConfigItemLst: []
@@ -28,12 +29,25 @@ MonoBehaviour:
     GoodSpr: {fileID: 21300000, guid: 5b40db1df2d2ecc44a161b68ebdbd434, type: 3}
   - Id: 0
     GoodSpr: {fileID: 21300000, guid: 9ed5b4a05f9e55f438860a817b9deb4c, type: 3}
-  - Id: 0
-    GoodSpr: {fileID: 21300000, guid: 97f35671233085a4487cd515e5b19020, type: 3}
   mapConfigItemLst:
-  - mapState: 0
+  - mapState: 2
     Id: 0
+    Spr: {fileID: 21300000, guid: 1ea0ef582308dff489a30128cbd17249, type: 3}
+  - mapState: 3
+    Id: 1
+    Spr: {fileID: 21300000, guid: ed7fedcfebad5ea4597d44bc7c89844d, type: 3}
+  - mapState: 0
+    Id: 2
     Spr: {fileID: 21300000, guid: 95396bb64b894a1418e36a0f47984bb1, type: 3}
   - mapState: 1
-    Id: 1
+    Id: 3
     Spr: {fileID: 21300000, guid: 5f7fd68f79dd5c744b0845eee3223f17, type: 3}
+  truckConfigItemLst:
+  - Id: 0
+    Amount: {fileID: 21300000, guid: 824352b6c97a1dc4daa206d56425fc1d, type: 3}
+  - Id: 1
+    Amount: {fileID: 21300000, guid: 49a3e286e6bcd2449abfeafba53488bc, type: 3}
+  - Id: 2
+    Amount: {fileID: 21300000, guid: 33380fea8f7696443b16ac63557ebd25, type: 3}
+  - Id: 3
+    Amount: {fileID: 21300000, guid: ca31288b73cff7f45ad4762143da25e1, type: 3}
